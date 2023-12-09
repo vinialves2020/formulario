@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { FireDb } from './firebaseConfig';
-import { collection, addDoc } from "firebase/firestore"; 
+import { collection, addDoc, setDoc, doc } from "firebase/firestore"; 
 
 const FormularioWrapper = styled.form`
   max-width: 500px;
@@ -64,7 +64,8 @@ const App = () => {
 
   const handleSubmit =  async (event) => {
     event.preventDefault();
-    await addDoc(collection(FireDb, "Plantas"), {
+    const usersCollectionRef = collection(FireDb, "Plantas");
+    await setDoc(doc(usersCollectionRef,formulario.Nome), {
     Nome: formulario.Nome,
     NomeAlternativos: formulario.NomeAlternativos,
     Cor:formulario.Cor,
