@@ -64,7 +64,7 @@ const App = () => {
 
   const handleSubmit =  async (event) => {
     event.preventDefault();
-    const usersCollectionRef = collection(FireDb, "Plantas");
+    const usersCollectionRef = collection(FireDb, "Populares");
     await setDoc(doc(usersCollectionRef,formulario.Nome), {
     Nome: formulario.Nome,
     NomeAlternativos: formulario.NomeAlternativos,
